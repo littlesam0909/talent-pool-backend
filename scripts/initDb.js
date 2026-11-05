@@ -23,16 +23,25 @@ async function initDatabase() {
     ]);
     console.log('✅ 集合與索引建立完成！');
 
-    const existingRules = await SystemConfig.findOne({ config_key: 'scoring_rules' });
-    if (!existingRules) {
-      await SystemConfig.create({
-        config_key: 'scoring_rules',
-        scope_scores: { "國際性": 3, "全港性": 2, "地區性": 1, "校內": 1 },
-        award_scores: { "第一名/冠軍/金獎": 3, "第二名/亞軍/銀獎": 2, "第三名/季軍/銅獎": 1, "其他": 0, "沒有": 0 },
-        performance_scores: { "1": 1, "2": 2, "3": 3 }
-      });
-      console.log('✅ 初始化動態計分規則成功！');
-    }
+    // 自動建立或更新動態計分規則 (Upsert 機制)
+    await SystemConfig.findOneAndUpdate(
+      { config_key: 'scoring_rules' },
+      {
+        $set: {
+          scope_scores: { "國際性": 3, "全港性": 2, "地區性": 1, "校內": 1 },
+          award_scores: { 
+            "第一名/冠軍/金獎": 3, 
+            "第二名/亞軍/銀獎": 2, 
+            "第三名/季軍/銅獎": 1, 
+            "其他": 0, 
+            "沒有": 0 
+          },
+          performance_scores: { "1": 1, "2": 2, "3": 3 }
+        }
+      },
+      { upsert: true, new: true }
+    );
+    console.log('✅ 動態計分規則已同步更新至最新設定！');
 
     console.log('🎉 資料庫模型與預設組態設定完成！');
     process.exit(0);
