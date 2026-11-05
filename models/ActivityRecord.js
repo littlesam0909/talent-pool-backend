@@ -33,7 +33,7 @@ const ActivityRecordSchema = new mongoose.Schema({
     rank: { 
       type: String, 
       required: true, 
-      enum: ['第一名/冠', '第二名/亞', '第三名/季', '其他', '沒有'],
+      enum: ['第一名/冠軍/金獎', '第二名/亞軍/銀獎', '第三名/季軍/銅獎', '其他', '沒有'],
       default: '沒有'
     },
     rank_other: { type: String, default: null },

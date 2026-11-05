@@ -28,7 +28,7 @@ async function initDatabase() {
       await SystemConfig.create({
         config_key: 'scoring_rules',
         scope_scores: { "國際性": 3, "全港性": 2, "地區性": 1, "校內": 1 },
-        award_scores: { "第一名/冠": 3, "第二名/亞": 2, "第三名/季": 1, "其他": 0, "沒有": 0 },
+        award_scores: { "第一名/冠軍/金獎": 3, "第二名/亞軍/銀獎": 2, "第三名/季軍/銅獎": 1, "其他": 0, "沒有": 0 },
         performance_scores: { "1": 1, "2": 2, "3": 3 }
       });
       console.log('✅ 初始化動態計分規則成功！');
