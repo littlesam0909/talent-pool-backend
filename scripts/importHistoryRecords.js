@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const Student = require('../models/Student');
 // 假設你有定義 ActivityRecord model，若尚未建立，腳本會直接寫入 activityrecords 集合
-const FILE_PATH = path.join(__dirname, '../data/talent_pool_history.xlsx');
+const FILE_PATH = path.join(__dirname, '../data/人才庫總表.xlsx');
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/talent_pool';
 const IS_DRY_RUN = process.argv.includes('--dry-run');
 
