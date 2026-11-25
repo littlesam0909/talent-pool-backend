@@ -17,10 +17,7 @@ async function runPracticeIndexes() {
       { key: { activity_type: 1, teacher_evaluation_score: -1 }, name: 'idx_type_score' },
       
       // 通配符索引：一次涵蓋 smart_tags 底下 8 個多元智能欄位
-      { key: { 'smart_tags.$**': 1 }, name: 'idx_smart_tags_wildcard' },
-      
-      // 關聯鍵索引
-      { key: { student_id: 1 }, name: 'idx_student_id' }
+      { key: { 'smart_tags.$**': 1 }, name: 'idx_smart_tags_wildcard' }
     ]);
 
     console.log('2. 建立 students 索引...');
