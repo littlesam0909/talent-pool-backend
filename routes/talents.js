@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Talent = require('../models/Talent');
-const Student = require('../models/student');
+const Student = require('../models/Student');
 const { requireAuth, requireRole } = require('../middleware/auth');
 
 // 所有人才與得獎紀錄 API 皆需先通過登入驗證
