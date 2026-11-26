@@ -40,7 +40,7 @@ const SCHOOL_OPTIONS = {
 
 // 輔助函式 1：透過永久學號（studentId）或「學年 + 班別 + 學號（classNo）」從 Student.academic_history 查找學生
 const resolveStudentFromHistory = async ({ studentId, academicYear, className, classNo }) => {
-  const year = (academicYear || '2026-27').trim();
+  const year = (academicYear || '2026-2027').trim();
 
   if (studentId) {
     const stu = await Student.findById(studentId.trim());
@@ -156,7 +156,7 @@ router.post('/', async (req, res) => {
     const resolved = await resolveStudentFromHistory({ studentId, academicYear, className, classNo });
     if (!resolved) {
       return res.status(404).json({
-        message: `在 ${academicYear || '2026-27'} 學年名冊中找不到該學生（${className || ''} ${classNo || ''}），請確認學生資料已匯入`
+        message: `在 ${academicYear || '2026-2027'} 學年名冊中找不到該學生（${className || ''} ${classNo || ''}），請確認學生資料已匯入`
       });
     }
 
