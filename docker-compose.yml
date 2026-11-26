@@ -1,4 +1,11 @@
+cat <<'EOF' > docker-compose.yml
 services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+
   redis:
     image: redis:7-alpine
     restart: unless-stopped
@@ -15,7 +22,11 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
     depends_on:
+      - mongo
       - redis
 
 volumes:
+  mongo_data:
   redis_data:
+EOF
+
