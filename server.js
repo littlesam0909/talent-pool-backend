@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
-const { RedisStore } = require('connect-redis');
+const RedisStore = require('connect-redis').default;
 const { createClient } = require('redis');
 
 // 引入你原本寫好的資料庫連線函式（請依你實際檔案路徑與名稱調整）
