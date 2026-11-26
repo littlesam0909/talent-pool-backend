@@ -22,7 +22,7 @@ const talentSchema = new mongoose.Schema(
     academicYear: {
       type: String,
       required: true,
-      default: '2026-27',
+      default: '2026-2027',
       trim: true
     },
     className: {
