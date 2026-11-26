@@ -52,6 +52,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/talents', talentRoutes);
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 後端伺服器已啟動，監聽位址：http://127.0.0.1:${PORT}`);
 });
