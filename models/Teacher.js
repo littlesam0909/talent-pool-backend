@@ -39,10 +39,9 @@ const teacherSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // 儲存前自動使用 bcryptjs 加密密碼
-teacherSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+teacherSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
   this.password = await bcrypt.hash(this.password, 12);
-  next();
 });
 
 // 實例方法：驗證登入密碼
