@@ -9,6 +9,7 @@ const router = express.Router();
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
+  skipSuccessfulRequests: true,
   message: { success: false, message: '登入嘗試次數過多，請 15 分鐘後再試' },
   standardHeaders: true,
   legacyHeaders: false
